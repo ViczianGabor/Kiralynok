@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,17 +46,26 @@ namespace Kiralynok
             kiralynok = int.Parse(Console.ReadLine());
 
             Random rnd = new Random();
+
             for (int i = 0; i < kiralynok; i++)
             {
-                int sor = rnd.Next(0, 8);
-                int oszlop = rnd.Next(0, 8);
-                if (t[sor, oszlop] == '#')
+                while (true)
                 {
-                    t[sor, oszlop] = 'K';
+                    int sor = rnd.Next(0, 8);
+                    int oszlop = rnd.Next(0, 8);
+                    if (t[sor, oszlop] == '#')
+                    {
+                        t[sor, oszlop] = 'K';
+                        break;
+                    }
+
                 }
             }
 
-            
+
+
+
+
 
         }
 
