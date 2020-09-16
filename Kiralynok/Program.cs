@@ -33,8 +33,21 @@ namespace Kiralynok
         }
 
 
-        public void elhelyez()
+        public void elhelyez(int N)
         {
+            //véletlen helyiérték létrehozása
+            // - random osztály értékek halmaza: [0,7]
+            // - véletlen sor és oszlop
+            // - elhelyezzük a k-t
+            // - HA!!!! ÜRES -> "#"
+            Random rnd = new Random();
+            int sor = rnd.Next(0,8);
+            int oszlop = rnd.Next(0, 8);
+            if (t[sor,oszlop]== '#')
+            {
+                t[sor, oszlop] = 'K';
+            }
+            
 
         }
 
@@ -85,7 +98,9 @@ namespace Kiralynok
             tabla t = new tabla('#');
             Console.WriteLine("Üres tábla:");
             t.megjelenit();
-            
+            t.elhelyez(1);
+            Console.WriteLine("\n");
+            t.megjelenit();
 
 
             Console.ReadKey();
