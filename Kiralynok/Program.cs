@@ -47,14 +47,15 @@ namespace Kiralynok
 
             for (int i = 0; i < N; i++)
             {
-                while (true)
+                bool igaz = true;
+                while (igaz)
                 {
                     int sor = rnd.Next(0, 8);
                     int oszlop = rnd.Next(0, 8);
                     if (t[sor, oszlop] == '#')
                     {
                         t[sor, oszlop] = 'K';
-                        break;
+                        igaz = false;
                     }
 
                 }
@@ -93,14 +94,42 @@ namespace Kiralynok
 
 
 
-        public int uresoszlop()
+        public bool uresoszlop(int oszlop)
         {
-            return 0;
+           
+            bool van = false;
+            while (!van&& t[0,oszlop] == '#')
+            {
+                if (t[0,oszlop] == 'K')
+                {
+                    van = true;
+                    return false;
+                }
+
+
+            }
+            return true;
+
+
+            
         }
 
-        public int uresSor()
+        public bool uresSor(int sor)
         {
-            return 0;
+            int i = 0;
+            bool van = false;
+            while (!van && t[sor,i] =='#')
+            {
+                if (t[sor,i] == 'K')
+                {
+                    van = true;
+                    return false;
+                }
+                i++;
+            }
+
+            return true;
+
 
 
         }
@@ -118,7 +147,9 @@ namespace Kiralynok
             t.elhelyez(1);
             Console.WriteLine("\n");
             t.megjelenit();
-
+            
+            //t.uresoszlop(2);
+            Console.WriteLine(t.uresSor(2));
 
             Console.ReadKey();
         }
