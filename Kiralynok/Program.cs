@@ -13,7 +13,7 @@ namespace Kiralynok
         private char Urescella;
         private int uresOszlopSzam;
         private int UresSorokszama;
-        private int kiralynok;
+       
 
 
 
@@ -42,12 +42,10 @@ namespace Kiralynok
             // - elhelyezzük a k-t
             // - HA!!!! ÜRES -> "#"
 
-            Console.Write("Mennyi királynőt akarsz elhelyezni : ");
-            kiralynok = int.Parse(Console.ReadLine());
-
+      
             Random rnd = new Random();
 
-            for (int i = 0; i < kiralynok; i++)
+            for (int i = 0; i < N; i++)
             {
                 while (true)
                 {
