@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Kiralynok
 {
@@ -52,7 +53,7 @@ namespace Kiralynok
                 {
                     int sor = rnd.Next(0, 8);
                     int oszlop = rnd.Next(0, 8);
-                    if (t[sor, oszlop] == '#')
+                    if (t[sor, oszlop] == Urescella)
                     {
                         t[sor, oszlop] = 'K';
                         igaz = false;
@@ -70,8 +71,25 @@ namespace Kiralynok
         }
 
 
-        public void fajlbair()
+        public void fajlbair(StreamWriter fajl)
         {
+
+            //fajl.WriteLine("Ez egy szöveg");
+            for (int i = 0; i < 8; i++)
+            {
+                string sor = "";
+                for (int j = 0; j < 8; j++)
+                {
+                    sor += t[i, j];
+                }
+                fajl.WriteLine(sor);
+            }
+            
+            
+            
+            
+
+
 
 
 
@@ -181,6 +199,14 @@ namespace Kiralynok
         {
 
             tabla t = new tabla('#');
+            tabla[] tablak = new tabla[64];
+
+
+
+
+
+
+
             Console.WriteLine("Üres tábla:");
             t.megjelenit();
             t.elhelyez(1);
@@ -210,13 +236,13 @@ namespace Kiralynok
 
             int uressor = 0;
             int uresoszlop = 0;
-            for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
             {
-                if (t.uresoszlop(i) == true)
+                if (t.uresoszlop(j) == true)
                 {
                     uresoszlop++;
                 }
-                if (t.uresSor(i) == true)
+                if (t.uresSor(j) == true)
                 {
                     uressor++;
                 }
@@ -224,6 +250,34 @@ namespace Kiralynok
 
             Console.WriteLine("Üres sorok száma:"+ uressor);
             Console.WriteLine("Üres oszlopok száma: "+ uressor);
+
+
+            StreamWriter ki = new StreamWriter("adatok.txt");
+
+            for (int k = 0; k < 64; k++)
+            {
+                tablak[k] = new tabla('*');
+            }
+
+            for (int i = 0; i < 64; i++)
+            {
+                tablak[i].elhelyez(i + 1);
+                tablak[i].fajlbair(ki);
+                ki.WriteLine();
+            }
+
+
+
+
+
+
+            
+
+            ki.Close();
+
+
+
+
 
 
 
