@@ -97,6 +97,24 @@ namespace Kiralynok
         public bool uresoszlop(int oszlop)
         {
             int i = 0;
+
+            while (i < 8 && t[i, oszlop] != 'K')
+            {
+                i++;
+            }
+
+            if (i < 8)
+            {
+                return false;
+            }
+            else
+            {
+
+                return true;
+            }
+
+            /*
+            int i = 0;
             bool van = true;
             while (van&& i<8)
             {
@@ -109,29 +127,49 @@ namespace Kiralynok
                 i++;
             }
             return true;
+            */
 
 
-            
         }
 
         public bool uresSor(int sor)
         {
-            int i = 0;
+            /* int i = 0;
 
-            bool van = true;
-            while (van && i < 8)
+              bool van = true;
+              while (van && i < 8)
+              {
+                  if (t[sor,i] == 'K')
+                  {
+                      van = false;
+                      return false;
+                  }
+                  i++;
+              }
+
+              return true;
+              */
+            int i = 0;
+            
+            while(i<8 && t[sor,i] != 'K')
             {
-                if (t[sor,i] == 'K')
-                {
-                    van = false;
-                    return false;
-                }
                 i++;
             }
 
-            return true;
+            if (i<8)
+            {
+                return false;
+            }
+            else
+            {
+
+                return true;
+            }
 
 
+
+
+           
 
         }
 
@@ -149,9 +187,46 @@ namespace Kiralynok
             Console.WriteLine("\n");
             t.megjelenit();
 
-            Console.WriteLine("Van az oszlopban K.\t "+t.uresoszlop(2)); 
-            
-            Console.WriteLine("Van a sorban K.  \t"+t.uresSor(2));
+            if (t.uresSor(2))
+            {
+                Console.WriteLine("A sor üres");
+            }
+            else
+            {
+                Console.WriteLine("A sor NEM üres");
+            }
+
+            if (t.uresoszlop(2))
+            {
+                Console.WriteLine("Az oszlop üres");
+
+            }
+            else
+            {
+                Console.WriteLine("Az oszlop NEM üres");
+            }
+
+            Console.WriteLine("8. feladat: Az öresoszlopok ls sorok száma \n");
+
+            int uressor = 0;
+            int uresoszlop = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                if (t.uresoszlop(i) == true)
+                {
+                    uresoszlop++;
+                }
+                if (t.uresSor(i) == true)
+                {
+                    uressor++;
+                }
+            }
+
+            Console.WriteLine("Üres sorok száma:"+ uressor);
+            Console.WriteLine("Üres oszlopok száma: "+ uressor);
+
+
+
 
             Console.ReadKey();
         }
